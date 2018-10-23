@@ -25,7 +25,7 @@ class AdapterGempaFr : RecyclerView.Adapter<AdapterGempaFr.cardView1>() {
 
 
    inner class cardView1(view: View): RecyclerView.ViewHolder(view){
-        val textData : TextView =  view.tv_gempa_fr
+        val textData : TextView =  view.tempat_gempa
     }
 
   fun update(x: List<String>){
