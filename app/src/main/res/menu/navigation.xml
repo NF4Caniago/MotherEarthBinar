@@ -5,7 +5,8 @@
     <item
             android:id="@+id/gempa"
             android:icon="@drawable/world"
-            android:title="@string/gempa"/>
+            android:title="@string/gempa"
+    />
 
     <item
             android:id="@+id/cuaca"

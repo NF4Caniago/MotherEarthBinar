@@ -1,6 +1,5 @@
 package com.example.user.motherearthbinar
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -10,13 +9,10 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.gempa_fr.*
 
 
-class GempaFr : Fragment() {
+class GempaFragment : Fragment() {
 
-    val myadapter = AdapterGempaFr()
+    lateinit var myadapter : AdapterGempaFr
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.gempa_fr, container, false)
@@ -24,6 +20,10 @@ class GempaFr : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        context?.let {
+            myadapter =  AdapterGempaFr(it)
+        }
+
         initRecycleView()
         setData()
     }
@@ -36,9 +36,8 @@ class GempaFr : Fragment() {
     }
 
     private fun setData(){
-        val data: List<String> = listOf("tempat1" ,"tempat2" ,"tempat3" ,"tempat4" ,"tempat5", "tempat6" , "tempat7" , "tempat8" , "tempat9" , "tempat10")
+        var data : List<String> = listOf("tempat1","tempat2","tempat3","tempat4","tempat5","tempat6","tempat7","tempat8","tempat9","tempat10")
         myadapter.update(data)
     }
-
 
 }

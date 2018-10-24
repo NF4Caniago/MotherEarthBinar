@@ -11,25 +11,25 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.gempa -> {
-                changeFragment(GempaFr())
+                changeFragment(GempaFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.cuaca -> {
-                changeFragment(GempaFr())
+                changeFragment(GempaFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.berita -> {
-                changeFragment(GempaFr())
+                changeFragment(GempaFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.donasi -> {
-                changeFragment(GempaFr())
+                changeFragment(GempaFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
             R.id.quake_alert -> {
-                changeFragment(GempaFr())
+                changeFragment(GempaFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_acttivity)
-
+        changeFragment(GempaFragment())
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
