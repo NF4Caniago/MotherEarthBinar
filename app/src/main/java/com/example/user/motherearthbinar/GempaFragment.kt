@@ -37,6 +37,7 @@ class GempaFragment : Fragment() {
     private fun setData() {
         // data dummy test warna list gempa
         var dataGempa = mutableListOf<GempaModel>()
+
         val lokasiku: List<String> = listOf(
             "Sulawesi , Indonesia",
             "Lampung , Indonesia",
@@ -62,6 +63,7 @@ class GempaFragment : Fragment() {
             }
             myGempa.add(i,dummy)
         }
+
         myadapter.update(myGempa)
     }
 

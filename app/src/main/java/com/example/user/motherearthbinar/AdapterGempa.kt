@@ -15,7 +15,6 @@ class AdapterGempa(context: Context) : RecyclerView.Adapter<AdapterGempa.cardVie
 
     var data = arrayListOf<GempaModel>()
     var mycontext = context
-    var dataModel : ArrayList<GempaModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): cardView1 {
         return cardView1(LayoutInflater.from(parent.context).inflate(R.layout.view_holder_gempa, parent, false))
@@ -38,8 +37,6 @@ class AdapterGempa(context: Context) : RecyclerView.Adapter<AdapterGempa.cardVie
 
         // intent  ke detail gempa
         holder.btnDetail.setOnClickListener {
-
-            dataModel.add(data[position])
             val intent = Intent(mycontext, DetailGempaActivity::class.java)
             intent.putExtra("data",data[position])
             mycontext.startActivity(intent)

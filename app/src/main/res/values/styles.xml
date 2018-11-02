@@ -95,4 +95,18 @@
 
     </style>
 
+    <!-- berita fragment -->
+
+    <style name="korban_gemp">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #4784BA
+        </item>
+
+    </style>
+
 </resources>

@@ -34,4 +34,7 @@
 
         quake alert
     </string>
+
+    <string name="mapbox_access_token">pk.eyJ1IjoiYWZpZmNhbmlhZ28xNyIsImEiOiJjam8wMW8zemcxcDNmM2tuZGt1MHE2ZDlvIn0.kAh4yxavJ9s04uKPROEJTA</string>
+
 </resources>
