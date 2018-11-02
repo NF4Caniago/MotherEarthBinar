@@ -27,6 +27,14 @@
         </activity>
         <activity android:name=".DetailGempaActivity">
         </activity>
+        <activity android:name=".MainAPP">
+        </activity>
+        <activity android:name=".BeritaFragment">
+        </activity>
+        <activity android:name=".AdapterBerita">
+        </activity>
+        <activity android:name=".AdapterGempa">
+        </activity>
     </application>
 
 </manifest>

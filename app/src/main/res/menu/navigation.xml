@@ -18,10 +18,6 @@
             android:icon="@drawable/berita_icon"
             android:title="@string/berita"/>
 
-    <item
-            android:id="@+id/donasi"
-            android:icon="@drawable/union"
-            android:title="@string/donasi"/>
 
     <item
             android:id="@+id/quake_alert"

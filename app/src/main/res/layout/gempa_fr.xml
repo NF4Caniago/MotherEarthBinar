@@ -8,27 +8,13 @@
         tools:context=".GempaFragment"
         android:layout_marginTop="20dp">
 
-    <Button android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:text="terkini"
-            android:id="@+id/btnFilterTerkini"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/btn_filter_gempa"
-            android:layout_marginTop="20dp"
-    />
-
-
     <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/gempa_rcv"
-            app:layout_constraintTop_toBottomOf="@+id/btnFilterTerkini"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="3dp"
     />
 
 

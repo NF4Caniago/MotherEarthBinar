@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.gempa_fr.*
 
-
 class GempaFragment : Fragment() {
 
-    lateinit var myadapter: AdapterGempaFr
+    lateinit var myadapter: AdapterGempa
+    var myGempa : ArrayList<GempaModel> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.gempa_fr, container, false)
@@ -20,7 +20,7 @@ class GempaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         context?.let {
-            myadapter = AdapterGempaFr(it)
+            myadapter = AdapterGempa(it)
         }
 
         initRecycleView()
@@ -53,30 +53,7 @@ class GempaFragment : Fragment() {
             "waspada"
         )
 
-        var myGempa : ArrayList<GempaModel> = arrayListOf()
 
-
-//        var dummy1 = GempaModel().apply {
-//            lokasi = lokasiku[0]
-//            status = dummyStatus[0]
-//        }
-//
-//        var dummy2 = GempaModel().apply {
-//            lokasi = lokasiku[1]
-//            status = dummyStatus[1]
-//        }
-//        var dummy3 = GempaModel().apply {
-//            lokasi = lokasiku[2]
-//            status = dummyStatus[2]
-//        }
-//        var dummy4 = GempaModel().apply {
-//            lokasi = lokasiku[3]
-//            status = dummyStatus[3]
-//        }
-//        var dummy5 = GempaModel().apply {
-//            lokasi = lokasiku[4]
-//            status = dummyStatus[4]
-//        }
 
         for (i in lokasiku.indices) {
             var dummy = GempaModel().apply {
@@ -85,10 +62,24 @@ class GempaFragment : Fragment() {
             }
             myGempa.add(i,dummy)
         }
-//        dataGempa = mutableListOf(dummy1,dummy2,dummy3,dummy4,dummy5)
-
         myadapter.update(myGempa)
-
-
     }
+
+//    private fun requestServices() {
+//        val call = MainAPP().services.fetchAllStudent()
+//        call.enqueue(object : Callback<GempaResponse> {
+//            override fun onResponse(call: Call<GempaResponse>, response: Response<GempaResponse>) {
+//                if (response.code() == 200) {
+//                    response.body()?.data?.let {
+//                        getData(it.toMutableList())
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<GempaResponse>, t: Throwable) {
+//
+//            }
+//        })
+//    }
+
 }

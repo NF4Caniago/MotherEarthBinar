@@ -19,14 +19,10 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.berita -> {
-                changeFragment(GempaFragment())
+                changeFragment(BeritaFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.donasi -> {
-                changeFragment(GempaFragment())
-                return@OnNavigationItemSelectedListener true
-            }
 
             R.id.quake_alert -> {
                 changeFragment(GempaFragment())

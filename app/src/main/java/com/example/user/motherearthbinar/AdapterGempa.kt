@@ -9,22 +9,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import kotlinx.android.synthetic.main.view_holder_gempa_fr.view.*
+import kotlinx.android.synthetic.main.view_holder_gempa.view.*
 
-class AdapterGempaFr(context: Context) : RecyclerView.Adapter<AdapterGempaFr.cardView1>() {
+class AdapterGempa(context: Context) : RecyclerView.Adapter<AdapterGempa.cardView1>() {
 
-    var data = mutableListOf<GempaModel>()
+    var data = arrayListOf<GempaModel>()
     var mycontext = context
+    var dataModel : ArrayList<GempaModel> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): cardView1 {
-        return cardView1(LayoutInflater.from(parent.context).inflate(R.layout.view_holder_gempa_fr, parent, false))
+        return cardView1(LayoutInflater.from(parent.context).inflate(R.layout.view_holder_gempa, parent, false))
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: AdapterGempaFr.cardView1, position: Int) {
+    override fun onBindViewHolder(holder: AdapterGempa.cardView1, position: Int) {
         holder.textData.text = data[position].lokasi
 
         if (data[position].status == "aman") {
@@ -37,7 +38,10 @@ class AdapterGempaFr(context: Context) : RecyclerView.Adapter<AdapterGempaFr.car
 
         // intent  ke detail gempa
         holder.btnDetail.setOnClickListener {
+
+            dataModel.add(data[position])
             val intent = Intent(mycontext, DetailGempaActivity::class.java)
+            intent.putExtra("data",data[position])
             mycontext.startActivity(intent)
         }
     }
@@ -50,7 +54,7 @@ class AdapterGempaFr(context: Context) : RecyclerView.Adapter<AdapterGempaFr.car
     }
 
 
-    fun update(data: MutableList<GempaModel>) {
+    fun update(data: ArrayList<GempaModel>) {
         this.data = data
         notifyDataSetChanged()
     }

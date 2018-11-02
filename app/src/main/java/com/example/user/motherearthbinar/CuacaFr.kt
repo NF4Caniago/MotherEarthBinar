@@ -2,10 +2,13 @@ package com.example.user.motherearthbinar
 
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.annotations.SerializedName
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,3 +32,4 @@ class HomeFragment : Fragment() {
 
 
 }
+
