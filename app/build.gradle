@@ -54,5 +54,4 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:6.6.3'
 
 
-
 }

@@ -11,12 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_cuaca_fragment.view.*
+import kotlinx.android.synthetic.main.view_holder_berita1.view.*
 import kotlinx.android.synthetic.main.view_holder_gempa.view.*
 
-class AdapterGempa(context: Context) : RecyclerView.Adapter<AdapterGempa.cardView1>() {
+class AdapterGempa(val data: ArrayList<GempaModel>, val context: Context) : RecyclerView.Adapter<AdapterGempa.cardView1>() {
 
-    var data = arrayListOf<GempaModel>()
+    //var data = arrayListOf<GempaModel>()
     var mycontext = context
+    var status = listOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): cardView1 {
         return cardView1(LayoutInflater.from(parent.context).inflate(R.layout.view_holder_gempa, parent, false))
@@ -28,15 +31,17 @@ class AdapterGempa(context: Context) : RecyclerView.Adapter<AdapterGempa.cardVie
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onBindViewHolder(holder: AdapterGempa.cardView1, position: Int) {
-        holder.textData.text = data[position].lokasi
+        holder.lokasi.text = data[position].lokasi
+        holder.waktu.text = data[position].waktu
+        holder.sr.text = data[position].magnitude.toString()
 
-        if (data[position].status == "aman") {
+        if (status[position] == "aman") {
             holder.bg_card.setBackgroundColor(mycontext.resources.getColor(R.color.gempaAman))
             holder.btnDetail.setBackground(mycontext.resources.getDrawable(R.drawable.ellipse_button_detail_gempa_hijau))
-        } else if (data[position].status == "bahaya") {
+        } else if (status[position] == "bahaya") {
             holder.bg_card.setBackgroundColor(mycontext.resources.getColor(R.color.gempaBahaya))
             holder.btnDetail.setBackground(mycontext.resources.getDrawable(R.drawable.ellipse_button_detail_gempa_kuning))
-        } else if (data[position].status == "waspada") {
+        } else if (status[position] == "waspada") {
             holder.bg_card.setBackgroundColor(mycontext.resources.getColor(R.color.gempaWaspada))
             holder.btnDetail.setBackground(mycontext.resources.getDrawable(R.drawable.ellipse_button_detail_gempa_merah))
         }
@@ -45,20 +50,24 @@ class AdapterGempa(context: Context) : RecyclerView.Adapter<AdapterGempa.cardVie
         holder.btnDetail.setOnClickListener {
             val intent = Intent(mycontext, DetailGempaActivity::class.java)
             intent.putExtra("data",data[position])
+            intent.putExtra("status",status[position])
             mycontext.startActivity(intent)
         }
     }
 
 
     inner class cardView1(view: View) : RecyclerView.ViewHolder(view) {
-        val textData: TextView = view.tempat_gempa
+        val lokasi: TextView = view.tempat_gempa
         val btnDetail: Button = view.btn_detail
-        var bg_card: ConstraintLayout = view.bg_status
+        val bg_card: ConstraintLayout = view.bg_status
+        val waktu: TextView = view.tgl_gempa
+        val sr : TextView = view.sr
     }
 
 
-    fun update(data: ArrayList<GempaModel>) {
-        this.data = data
+    fun update(status: List<String>) {
+        this.status = status
         notifyDataSetChanged()
     }
+
 }

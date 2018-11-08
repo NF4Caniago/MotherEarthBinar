@@ -3,7 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.example.user.motherearthbinar">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
             android:allowBackup="true"
@@ -14,8 +14,8 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
         <activity
-                android:theme="@style/Theme.AppCompat.NoActionBar"
-                android:name=".SplashScreen">
+                android:name=".SplashScreen"
+                android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -31,8 +31,8 @@
         </activity>
         <activity android:name=".DetailGempaActivity">
         </activity>
-
-
+        <activity android:name=".CuacaFragment">
+        </activity>
     </application>
 
 </manifest>

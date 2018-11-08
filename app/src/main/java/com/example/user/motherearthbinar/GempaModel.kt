@@ -5,27 +5,33 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class GempaModel(
-    @SerializedName("lokasi") var lokasi: String? = "lokasi",
-    @SerializedName("tanggal") var tanggal: String? = "tanggal",
-    @SerializedName("waktu") var waktu: String? = "waktu",
-    @SerializedName("SR") var SR: Double? = 8.1,
-    @SerializedName("status") var status: String? = "bahaya"
+    @SerializedName("id") var id: String? = "1",
+    @SerializedName("earthquake_time") var waktu: String? = "2018-10-24T01:42:53.000Z",
+    @SerializedName("longitude") var longitude: Double? = 119.86,
+    @SerializedName("latitude") var latitude: Double? = 119.86,
+    @SerializedName("magnitude") var magnitude: Double? = 3.3,
+    @SerializedName("depth") var kedalaman: Int? = 10,
+    @SerializedName("location") var lokasi: String? = "lokasi"
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
         parcel.readValue(Double::class.java.classLoader) as? Double,
+        parcel.readValue(Double::class.java.classLoader) as? Double,
+        parcel.readValue(Double::class.java.classLoader) as? Double,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(lokasi)
-        parcel.writeString(tanggal)
+        parcel.writeString(id)
         parcel.writeString(waktu)
-        parcel.writeValue(SR)
-        parcel.writeString(status)
+        parcel.writeValue(longitude)
+        parcel.writeValue(latitude)
+        parcel.writeValue(magnitude)
+        parcel.writeValue(kedalaman)
+        parcel.writeString(lokasi)
     }
 
     override fun describeContents(): Int {
@@ -42,3 +48,6 @@ data class GempaModel(
         }
     }
 }
+
+
+

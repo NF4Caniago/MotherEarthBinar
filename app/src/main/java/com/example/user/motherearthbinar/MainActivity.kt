@@ -1,8 +1,8 @@
 package com.example.user.motherearthbinar
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.main_acttivity.*
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.cuaca -> {
-                changeFragment(GempaFragment())
+                changeFragment(CuacaFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.berita -> {
@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     private fun changeFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit()
     }
+
+
 
 
 

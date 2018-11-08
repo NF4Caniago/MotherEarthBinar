@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="43dp"
+                android:layout_marginLeft="25dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="19dp"
                 android:textAppearance="@style/lokasi"/>
@@ -35,35 +35,19 @@
                 android:id="@+id/tgl_gempa"
                 android:text="Tanggal Gempa"
                 app:layout_constraintTop_toBottomOf="@id/tempat_gempa"
-                app:layout_constraintRight_toLeftOf="@+id/waktu_gempa"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="15dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="43dp"
+                android:layout_marginLeft="25dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="10dp"
                 android:textAppearance="@style/tanggal"
         />
 
-        <TextView
-                android:id="@+id/waktu_gempa"
-                android:text="Waktu Gempa"
-                app:layout_constraintLeft_toRightOf="@+id/tgl_gempa"
-                app:layout_constraintTop_toBottomOf="@id/tempat_gempa"
-                app:layout_constraintBottom_toTopOf="@+id/sr"
-                android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="5dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:textAppearance="@style/waktu"
-        />
 
 
         <TextView
-
                 android:id="@+id/sr"
                 android:text="8,1"
                 app:layout_constraintTop_toBottomOf="@+id/tgl_gempa"
@@ -86,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="SR"
                 app:layout_constraintLeft_toRightOf="@id/sr"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="23dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:textAppearance="@style/sr2"
         />
