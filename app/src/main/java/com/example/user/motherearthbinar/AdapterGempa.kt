@@ -2,6 +2,8 @@ package com.example.user.motherearthbinar
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -24,15 +26,19 @@ class AdapterGempa(context: Context) : RecyclerView.Adapter<AdapterGempa.cardVie
         return data.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onBindViewHolder(holder: AdapterGempa.cardView1, position: Int) {
         holder.textData.text = data[position].lokasi
 
         if (data[position].status == "aman") {
             holder.bg_card.setBackgroundColor(mycontext.resources.getColor(R.color.gempaAman))
+            holder.btnDetail.setBackground(mycontext.resources.getDrawable(R.drawable.ellipse_button_detail_gempa_hijau))
         } else if (data[position].status == "bahaya") {
             holder.bg_card.setBackgroundColor(mycontext.resources.getColor(R.color.gempaBahaya))
+            holder.btnDetail.setBackground(mycontext.resources.getDrawable(R.drawable.ellipse_button_detail_gempa_kuning))
         } else if (data[position].status == "waspada") {
             holder.bg_card.setBackgroundColor(mycontext.resources.getColor(R.color.gempaWaspada))
+            holder.btnDetail.setBackground(mycontext.resources.getDrawable(R.drawable.ellipse_button_detail_gempa_merah))
         }
 
         // intent  ke detail gempa

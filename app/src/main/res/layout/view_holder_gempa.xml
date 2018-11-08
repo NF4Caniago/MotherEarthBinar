@@ -51,7 +51,7 @@
                 android:text="Waktu Gempa"
                 app:layout_constraintLeft_toRightOf="@+id/tgl_gempa"
                 app:layout_constraintTop_toBottomOf="@id/tempat_gempa"
-                app:layout_constraintBottom_toTopOf="@+id/SR"
+                app:layout_constraintBottom_toTopOf="@+id/sr"
                 android:layout_width="wrap_content"
                 android:layout_height="15dp"
                 android:layout_alignParentLeft="true"
@@ -96,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_detail"
                 android:text="Detail"
+                android:background="@drawable/ellipse_button_detail_gempa_merah"
                 app:layout_constraintRight_toRightOf="parent" android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 

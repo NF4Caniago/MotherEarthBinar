@@ -26,6 +26,7 @@ class BeritaFragment : Fragment() {
 
         initRecycleView()
         setData1()
+        setData2()
     }
 
     private fun initRecycleView() {
@@ -67,8 +68,17 @@ class BeritaFragment : Fragment() {
         myadapter.update(mymodel)
     }
 
-    private fun setData2(view: View){
+    private fun setData2(){
+            var judul = "Korban gempa Palu mencapai 1.000.000 jiwa"
+            var para = "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari"
 
+        with(judulhl){
+            text = judul
+        }
+
+        with(parahl){
+            text = para
+        }
 
     }
 
