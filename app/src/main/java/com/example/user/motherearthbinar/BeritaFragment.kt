@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_berita.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BeritaFragment : Fragment() {
 
@@ -21,12 +24,11 @@ class BeritaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         context?.let {
-            myadapter = AdapterBerita(it)
+            myadapter = AdapterBerita(mymodel,it)
         }
 
         initRecycleView()
-        setData1()
-        setData2()
+        requestServices()
     }
 
     private fun initRecycleView() {
@@ -39,47 +41,68 @@ class BeritaFragment : Fragment() {
     private fun setData1() {
         // data dummy test rc berita
 
-        var judulku: List<String> = listOf(
-            "Korban gempa Palu mencapai 1.000.000 jiwa",
-            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merata",
-            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merat",
-            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merat",
-            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merat"
-        );
-
-        val paraku : List<String> = listOf(
-            "perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari ",
-            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari",
-            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari",
-            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari",
-            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari"
-        )
-
-        for(i in judulku.indices) {
-            var dummy = BeritaModel().apply {
-                judul = judulku[i]
-                berita = paraku[i]
-            }
-            mymodel.add(i,dummy)
-        }
-
-
-
-        myadapter.update(mymodel)
+//        var judulku: List<String> = listOf(
+//            "Korban gempa Palu mencapai 1.000.000 jiwa",
+//            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merata",
+//            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merat",
+//            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merat",
+//            "Bantuan untuk korban gempa Donggala belum terdistribusi secara merat"
+//        );
+//
+//        val paraku : List<String> = listOf(
+//            "perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari ",
+//            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari",
+//            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari",
+//            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari",
+//            "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari"
+//        )
+//
+//        for(i in judulku.indices) {
+//            var dummy = BeritaModel().apply {
+//                judul = judulku[i]
+//                berita = paraku[i]
+//            }
+//            mymodel.add(i,dummy)
+//        }
+//
+//
+//
+//        myadapter.update(mymodel)
     }
 
-    private fun setData2(){
-            var judul = "Korban gempa Palu mencapai 1.000.000 jiwa"
-            var para = "Hampir setengah perekonomian di pulau Sulawesi mati akibat kejadian gempa yang melanda Kota Palu dini hari"
+        private fun requestServices() {
+            val call = MainApp().services.fetchAllBerita()
+            call.enqueue(object : Callback<BeritaResponse> {
+                override fun onResponse(call: Call<BeritaResponse>, response: Response<BeritaResponse>) {
+                    if (response.code() == 200) {
+                        response.body()?.data?.let {
+                            getData(it.toMutableList())
+                            with(judulhl){
+                                text = mymodel[0].source
+                            }
 
-        with(judulhl){
-            text = judul
+                            with(parahl){
+                                text = mymodel[0].content
+                            }
+                        }
+                    }
+                }
+                override fun onFailure(call: Call<BeritaResponse>, t: Throwable) {
+                }
+            })
         }
 
-        with(parahl){
-            text = para
-        }
 
+
+
+    private fun getData(data: MutableList<BeritaModel>) {
+        progress_bar1.visibility = View.GONE
+        mymodel.clear()
+        mymodel.addAll(data)
+        myadapter.notifyDataSetChanged()
     }
+
+
 
 }
+

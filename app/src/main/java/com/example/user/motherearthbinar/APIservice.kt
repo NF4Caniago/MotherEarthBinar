@@ -10,4 +10,7 @@ import retrofit2.http.GET
 interface APIservice {
     @GET("api/v1/earthquakes")
     fun fetchAllGempa(): Call<GempaResponse>
+
+    @GET("api/v1/news")
+    fun fetchAllBerita() : Call<BeritaResponse>
 }
